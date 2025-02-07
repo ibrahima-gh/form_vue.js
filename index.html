@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root" class="w-full h-screen flex justify-center items-center "></div>
     <script type="module">
         import {h, createApp} from "./node_modules/vue/dist/vue.esm-browser.js";
 
@@ -18,15 +19,16 @@
                 }
             },
             render() {
-            return h("form", [
-                h("h2", "Login"),
-                h("label", { for: "username" }, "Nom d'utilisateur : "),
-                h("input", { id: "username", type: "text", placeholder: "Nom d'utilisateur" }),
+            return h("form", {class: "flex justify-center flex-col gap-2 border p-20 text-white/70 bg-zinc-900 rounded-3xl"}, [
+                h("h2", {class : "text-4xl self-center mb-10"}, "Login"),
 
-                h("label", { for: "password" }, "Mot de passe : "),
-                h("input", { id: "password", type: "password", placeholder: "Mot de passe" }),
+                h("label", { for: "username", class: "font-medium" }, "Nom d'utilisateur"),
+                h("input",{ class: "bg-zinc-800 p-2 rounded-xl py-2 px-4", id: "username", type: "text", placeholder: "Nom d'utilisateur" }),
 
-                h("button", { type: "submit" }, "Se connecter")
+                h("label", { for: "password" }, "Mot de passe"),
+                h("input", { class: "bg-zinc-800 p-2 rounded-xl",  id: "password", type: "password", placeholder: "Mot de passe" }),
+
+                h("button", { class:"bg-blue-500 p-2 text-white rounded-3xl cursor-pointer hover:bg-blue-400 transition", type: "submit" }, "Se connecter")
             ]);
             }
         }
